@@ -35,20 +35,117 @@ def TFIDF(document,collectn):
        return word_tfidf
 
 
-DIR="/Users/jogg/Desktop/Andy/ML-NLP/Data2/mix20_rand700_tokens_cleaned/tokens/pos/"
-
-os.chdir(DIR)
+DIRLIST=["/Users/jogg/Desktop/Andy/ML-NLP/Data2/mix20_rand700_tokens_cleaned/tokens/pos/","/Users/jogg/Desktop/Andy/ML-NLP/Data2/mix20_rand700_tokens_cleaned/tokens/neg/"]
 cv_cycle=3
 
-filenum=0
-files=[]
-for file in glob.glob("*.txt"):
-    filenum+=1
-    files.append(file)
-d= int(filenum / cv_cycle)
-#print d
-
 for i in range(cv_cycle):
+   #For positive movie reviews
+    DIR=DIRLIST[0]
+    os.chdir(DIR)
+    filenum=0
+    files=[]
+    for file in glob.glob("*.txt"):
+        filenum+=1
+        files.append(file)
+    d= int(filenum / cv_cycle)
+    #print d
+
+    train_files=[]
+    test_files=[]
+    #print i
+    if i == 0:
+       for j in range(2*d):
+          m=re.match(r"cv[0-9]+_tok-([0-9]+).txt",files[j])
+          num=m.group(1)
+          #print j
+          fn = "cv"+'{0:03d}'.format(int(j))+"_tok-"+str(num)+".txt"
+          #print fn
+	  train_files.append(fn)
+
+       for j in range(2*d,3*d):
+          m=re.match(r"cv[0-9]+_tok-([0-9]+).txt",files[j])
+          num=m.group(1)
+          #print j
+          fn = "cv"+'{0:03d}'.format(int(j))+"_tok-"+str(num)+".txt"
+          #print fn
+	  test_files.append(fn)
+    elif i==1:
+       for j in range(d,3*d):
+          m=re.match(r"cv[0-9]+_tok-([0-9]+).txt",files[j])
+          num=m.group(1)
+          #print j
+          fn = "cv"+'{0:03d}'.format(int(j))+"_tok-"+str(num)+".txt"
+          #print fn
+	  train_files.append(fn)
+       #print "\n"
+       for j in range(d):
+          m=re.match(r"cv[0-9]+_tok-([0-9]+).txt",files[j])
+          num=m.group(1)
+          #print j
+          fn = "cv"+'{0:03d}'.format(int(j))+"_tok-"+str(num)+".txt"
+          #print fn
+	  test_files.append(fn)
+    elif i==2:
+       for j in range(0,d):
+          m=re.match(r"cv[0-9]+_tok-([0-9]+).txt",files[j])
+          num=m.group(1)
+          #print j
+          fn = "cv"+'{0:03d}'.format(int(j))+"_tok-"+str(num)+".txt"
+          #print fn
+	  train_files.append(fn)
+       for j in range(2*d,3*d):
+          m=re.match(r"cv[0-9]+_tok-([0-9]+).txt",files[j])
+          num=m.group(1)
+          #print j
+          fn = "cv"+'{0:03d}'.format(int(j))+"_tok-"+str(num)+".txt"
+          #print fn
+	  train_files.append(fn)
+       #print "\n"
+       for j in range(d,2*d):
+          m=re.match(r"cv[0-9]+_tok-([0-9]+).txt",files[j])
+          num=m.group(1)
+          #print j
+          fn = "cv"+'{0:03d}'.format(int(j))+"_tok-"+str(num)+".txt"
+          #print fn
+	  test_files.append(fn)
+
+    #print "\n\n"
+    
+    all_terms=[]
+    texts=[]
+    texts_train=[]
+    texts_test=[]
+    raw=""
+    #print train_files
+    #print test_files
+    trainandtestfiles=train_files + test_files
+    #print trainandtestfiles
+
+    for file in trainandtestfiles:
+        #print file
+        f=open(file,"r")
+        raw=f.read().decode("latin-1")+"\n"
+        f.close()
+        tokens=word_tokenize(raw)
+        all_terms=all_terms+tokens
+        text=nltk.Text(tokens)
+        texts.append(text)
+        if file in train_files:
+           texts_train.append(text)
+        elif file in test_files:
+           texts_test.append(text)
+
+  # For negative movie reviews
+    DIR=DIRLIST[1]
+    os.chdir(DIR)
+    filenum=0
+    files=[]
+    for file in glob.glob("*.txt"):
+        filenum+=1
+        files.append(file)
+    d= int(filenum / cv_cycle)
+    #print d
+
     train_files=[]
     test_files=[]
     #print i
@@ -112,15 +209,9 @@ for i in range(cv_cycle):
 
 
     
-    all_terms=[]
-    texts=[]
-    texts_train=[]
-    texts_test=[]
-    raw=""
-    #print train_files
-    #print test_files
     trainandtestfiles=train_files + test_files
     #print trainandtestfiles
+
     for file in trainandtestfiles:
         #print file
         f=open(file,"r")
@@ -190,6 +281,23 @@ for i in range(cv_cycle):
     
     #print freq_vectors_bow_train
     numpy.savetxt(trainf,freq_vectors_bow_train,fmt="%d")
+ 
+    #svm-light train file for bow
+    trainf_svm=open(path+"train_bow_svm.txt","w")
+
+    freq_vectors_bow_train_a= numpy.array(freq_vectors_bow_train)
+    (row,col)=freq_vectors_bow_train_a.shape 
+    for i in range(row):
+        if i in range(2*d):
+ 	    trainf_svm.write("+1 ")
+        else:
+ 	    trainf_svm.write("-1 ")
+        for j in range(col):
+            val=freq_vectors_bow_train_a[i,j] 
+            if val != 0: 
+ 	        trainf_svm.write(str(j) + ":" + str(val) + " ")
+        trainf_svm.write("\n")
+        
 
     #print texts_test
     freq_vectors_bow_test = [numpy.array(BOW(f,unique_terms)).astype(numpy.int64) for f in texts_test]
@@ -198,8 +306,26 @@ for i in range(cv_cycle):
     #print freq_vectors_bow_test
     numpy.savetxt(testf,freq_vectors_bow_test,fmt="%d")
 
+    #svm-light test file for bow
+    testf_svm=open(path+"test_bow_svm.txt","w")
+
+    freq_vectors_bow_test_a= numpy.array(freq_vectors_bow_test)
+    (row,col)=freq_vectors_bow_test_a.shape 
+    for i in range(row):
+        if i in range(d):
+ 	    testf_svm.write("+1 ")
+        else:
+ 	    testf_svm.write("-1 ")
+        for j in range(col):
+            val=freq_vectors_bow_test_a[i,j] 
+            if val != 0: 
+ 	        testf_svm.write(str(j) + ":" + str(val) + " ")
+        testf_svm.write("\n")
+
     trainf.close()
     testf.close()
+    trainf_svm.close()
+    testf_svm.close()
     
     
 ################PRESENCE##################
@@ -228,15 +354,50 @@ for i in range(cv_cycle):
     #print freq_vectors_pre_train
     numpy.savetxt(trainf,freq_vectors_pre_train,fmt="%d")
 
+    #svm-light train file for presence 
+    trainf_svm=open(path+"train_pre_svm.txt","w")
+
+    freq_vectors_pre_train_a= numpy.array(freq_vectors_pre_train)
+    (row,col)=freq_vectors_pre_train_a.shape 
+    for i in range(row):
+        if i in range(2*d):
+ 	    trainf_svm.write("+1 ")
+        else:
+ 	    trainf_svm.write("-1 ")
+        for j in range(col):
+            val=freq_vectors_pre_train_a[i,j] 
+            if val != 0: 
+ 	        trainf_svm.write(str(j) + ":" + str(val) + " ")
+        trainf_svm.write("\n")
+
     #print texts_test
     freq_vectors_pre_test = [numpy.array(presence(f,unique_terms)).astype(numpy.int64) for f in texts_test]
     #print "Vectors for test files created."
     
     #print freq_vectors_pre_test
     numpy.savetxt(testf,freq_vectors_pre_test,fmt="%d")
-      
+
+    #svm-light test file for bow
+    testf_svm=open(path+"test_pre_svm.txt","w")
+
+    freq_vectors_pre_test_a= numpy.array(freq_vectors_pre_test)
+    (row,col)=freq_vectors_pre_test_a.shape 
+    for i in range(row):
+        if i in range(d):
+ 	    testf_svm.write("+1 ")
+        else:
+ 	    testf_svm.write("-1 ")
+        for j in range(col):
+            val=freq_vectors_pre_test_a[i,j] 
+            if val != 0: 
+ 	        testf_svm.write(str(j) + ":" + str(val) + " ")
+        testf_svm.write("\n")
+
     trainf.close()
     testf.close()
+    trainf_svm.close()
+    testf_svm.close()
+    
 
 ################TF-IDF##################
 
@@ -262,14 +423,53 @@ for i in range(cv_cycle):
     #print "Vectors for train files created."
     
     #print freq_vectors_tfidf_train
-    numpy.savetxt(trainf,freq_vectors_tfidf_train)
+    numpy.savetxt(trainf,freq_vectors_tfidf_train,fmt="%.6f")
+
+    #svm-light train file for tf-idf 
+    trainf_svm=open(path+"train_tfidf_svm.txt","w")
+
+    freq_vectors_tfidf_train_a= numpy.array(freq_vectors_tfidf_train)
+    (row,col)=freq_vectors_tfidf_train_a.shape 
+    for i in range(row):
+        if i in range(2*d):
+ 	    trainf_svm.write("+1 ")
+        else:
+ 	    trainf_svm.write("-1 ")
+        for j in range(col):
+            val=freq_vectors_tfidf_train_a[i,j] 
+            if val != 0: 
+ 	        trainf_svm.write(str(j) + ":" + str(val) + " ")
+        trainf_svm.write("\n")
 
     #print texts_test
-    freq_vectors_tfidf_test = [numpy.array(TFIDF(f,collection_test)) for f in texts_test]
+    freq_vectors_tfidf_test = [numpy.array(TFIDF(f,collection_train)) for f in texts_test]
     #print "Vectors for test files created."
     
     #print freq_vectors_tfidf_test
-    numpy.savetxt(testf,freq_vectors_tfidf_test)
-      
+    numpy.savetxt(testf,freq_vectors_tfidf_test,fmt="%.6f")
+
+    #svm-light test file for tfidf 
+    testf_svm=open(path+"test_tfidf_svm.txt","w")
+
+    freq_vectors_tfidf_test_a= numpy.array(freq_vectors_tfidf_test)
+    (row,col)=freq_vectors_tfidf_test_a.shape 
+    for i in range(row):
+        if i in range(d):
+ 	    testf_svm.write("+1 ")
+        else:
+ 	    testf_svm.write("-1 ")
+        for j in range(col):
+            val=freq_vectors_tfidf_test_a[i,j] 
+            if val != 0: 
+ 	        testf_svm.write(str(j) + ":" + str(val) + " ")
+        testf_svm.write("\n")
+
     trainf.close()
     testf.close()
+    trainf_svm.close()
+    testf_svm.close()
+
+
+    #classification
+    
+
