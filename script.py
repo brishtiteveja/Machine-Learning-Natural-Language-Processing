@@ -35,7 +35,7 @@ def TFIDF(document,collectn):
        return word_tfidf
 
 
-DIRLIST=["/Users/jogg/Desktop/Andy/ML-NLP/Data2/mix20_rand700_tokens_cleaned/tokens/pos/","/Users/jogg/Desktop/Andy/ML-NLP/Data2/mix20_rand700_tokens_cleaned/tokens/neg/"]
+DIRLIST=["/Users/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Project/Machine-Learning-Natural-Language-Processing/mix20_rand700_tokens_cleaned/tokens/pos/","/Users/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Project/Machine-Learning-Natural-Language-Processing/mix20_rand700_tokens_cleaned/tokens/neg/"]
 cv_cycle=3
 
 for i in range(cv_cycle):
@@ -234,7 +234,7 @@ for i in range(cv_cycle):
     unique_terms=sorted(list(set(all_terms)))
     #print unique_terms
     
-    path="/Users/jogg/Desktop/Andy/ML-NLP/Data2/cvresult" + str(i)+"/"
+    path="/Users/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Project/Machine-Learning-Natural-Language-Processing/cvresult" + str(i)+"/"
     if not os.path.exists(path):
        #print "hello"
        os.makedirs(path)
