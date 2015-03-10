@@ -42,6 +42,7 @@ import time
 import re
 from collections import defaultdict
 
+from nltk.corpus import brown, treebank
 from nltk import TaggerI, FreqDist, untag, config_megam
 from nltk.classify.maxent import MaxentClassifier                  
 from nltk.classify.megam import config_megam, call_megam
@@ -395,6 +396,57 @@ class MaxentPosTagger(TaggerI):
         return zip(sentence, history)
 
 
+def getFromFiles():
+    import string 
+    trainf = open("/Users/ananda/Documents/projects/oct27.splits/oct27.traindev", "r")
+    testf = open("/Users/ananda/Documents/projects/oct27.splits/oct27.test", "r")
+
+    sents =[]
+    sent = []
+    for l in trainf:
+        l = l.rstrip()
+        if l != "":
+            wt = l.split("\t")
+            wt[0]=filter(lambda x: x in string.printable, wt[0])
+            wt[1]=filter(lambda x: x in string.printable, wt[1])
+            w = (wt[0])
+            t = (wt[1])
+            sent.append((w,t))
+        if l == "":
+            sents.append(sent)
+#             print len(sents)
+#         for item in sents:
+#             print item[0], ', '.join(map(str, item[1:]))
+            sent=[] 
+
+    training = sents
+    print len(training)
+
+    sents2 =[]
+    sent = []
+    for l in testf:
+        l = l.rstrip()
+        if l != "":
+            wt = l.split("\t")
+            wt[0]=filter(lambda x: x in string.printable, wt[0])
+            wt[1]=filter(lambda x: x in string.printable, wt[1])
+            w = (wt[0])
+            t = (wt[1])
+            sent.append((w,t))
+        if l == "":
+            sents2.append(sent)
+#         print len(sents)
+#         for item in sents:
+#             print item[0], ', '.join(map(str, item[1:]))
+            sent=[] 
+
+    test = sents2
+
+    print len(test)
+    print ""
+    
+    return (training,test)
+
 def demo(corpus, num_sents):
     """
     Loads a few sentences from the Brown corpus or the Wall Street Journal
@@ -408,17 +460,23 @@ def demo(corpus, num_sents):
     @param num_sents: Number of sentences to load from a corpus. Use a small
     number, as training might take a while.
     """
-    if corpus.lower() == "brown":
+    if corpus.lower() == "custom":
+        (training,test) = getFromFiles()
+    elif corpus.lower() == "brown":
         from nltk.corpus import brown
         tagged_sents = brown.tagged_sents()[:num_sents]
     elif corpus.lower() == "treebank":
         from nltk.corpus import treebank
-        tagged_sents = treebank.tagged_sents()[:num_sents]
+        #tagged_sents = treebank.tagged_sents()[:num_sents]
     else:
         print "Please load either the 'brown' or the 'treebank' corpus."
 
-    size = int(len(tagged_sents) * 0.1)
-    train_sents, test_sents = tagged_sents[size:], tagged_sents[:size]
+    if corpus.lower() == "custom":
+        size = len(training) + len(test)
+        train_sents, test_sents = training, test
+    else:
+        size = int(len(tagged_sents) * 0.1)
+        train_sents, test_sents = tagged_sents[size:], tagged_sents[:size]
     maxent_tagger = MaxentPosTagger()
     maxent_tagger.train(train_sents)
     print "tagger accuracy (test %i sentences, after training %i):" % \

@@ -99,8 +99,3 @@ print test_corpus
 Tags = st.tag('What is the airspeed of an unladen swallow ?'.split())
 print Tags
 
-def evaluate(sents, gold):
-    tagged_sents = untag(sent) for sent in gold
-    gold_tokens = sum(gold, [])
-    test_tokens = sum(tagged_sents, [])
-    return hmm.accuracy(gold_tokens, test_tokens)
