@@ -1,0 +1,38 @@
+#Penn Treebank POS Tags
+#Column1 Column2 Column3
+#POSTag Description Example
+"CC" "coordinating conjunction" "and"
+"CD" "cardinal number" "1, third" 
+"DT" "determiner" "the"
+"EX" "existential there" "there is"
+"FW" "foreign word" "d'hoevre"
+"IN" "preposition/subordinating conjunction" "in, of, like"
+"JJ" "adjective" "big"
+"JJR" "adjective, comparative" "bigger"
+"JJS" "adjective, superlative" "biggest"
+"LS" "list marker" "1)"
+"MD" "modal" "could, will"
+"NN" "noun, singular or mass" "door"
+"NNS" "noun plural" "doors"
+"NNP" "proper noun, singular" "John"
+"NNPS" "proper noun, plural" "Vikings"
+"PDT" "predeterminer" "both the boys" #a word or phrase that occurs before a determiner, typically quantifying the noun phrase, for example both or a lot of
+"POS" "possessive ending" "friend's" 
+"PRP" "personal pronoun" "I, he, it"
+"PRPS" "possessive pronoun" "my, his"
+"RB" "adverb" "however, usually, naturally, quietly, carefully"
+"RBR" "adverb, comparative" "more quietly, more carefully"
+"RBS" "adverb, superlative" "most quietly, most carefully"
+"RP" "particle" "give up, put off" #a function word that must be associated with another word or phrase to impart meaning
+"TO" "to" "to go, to him"
+"UH" "interjection" "uhhuhhuhh" #an interjection or exclamation may be a word used to express an emotion or sentiment on the part of the speaker
+"VB" "verb, base form" "take"
+"VBD" "verb, past tense" "took"
+"VBG" "verb, gerund/present participle" "taking"
+"VBN" "verb, past participle" "taken"
+"VBP" "verb, sing. present, non-3d" "take"
+"VBZ" "verb, 3rd person sing. present" "takes"
+"WDT" "wh-determiner" "which"
+"WP" "wh-pronoun" "who, what"
+"WP$" "possessive wh-pronoun" "whose"
+"WRB" "wh-adverb" "where, when"
