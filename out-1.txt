@@ -1,0 +1,47 @@
+[Found /usr/local/bin/megam: /usr/local/bin/megam]
+Total sentences in Brown Corpus: 57340
+Total words in Brown Corpus: 1161192
+Unigram Tagger:
+Training
+Evaluation
+accuracy: 89.8 %
+precision: 79.2 %
+recaull: 70.8 %
+f_measure: 74.8 %
+Took 15.7198750973 time
+Bigram Tagger:
+Training
+Evaluation
+accuracy: 91.9 %
+precision: 80.2 %
+recaull: 76.5 %
+f_measure: 78.3 %
+Took 20.8908507824 time
+Trigram Tagger:
+Training
+Evaluation
+accuracy: 91.4 %
+precision: 79.9 %
+recaull: 75.0 %
+f_measure: 77.4 %
+Took 22.4683640003 time
+Regexp Tagger:
+Training
+Evaluation
+accuracy: 29.8 %
+precision: 50.3 %
+recaull: 45.0 %
+f_measure: 47.5 %
+Took 12.9228389263 time
+
+Affix Tagger:
+Training
+Evaluation
+accuracy: 37.2 %
+precision: 62.3 %
+recaull: 55.7 %
+f_measure: 58.8 %
+Took 16.5521628857 time
+Classifier Based Tagger(NaiveBayesClassifier):
+Training
+Evaluation

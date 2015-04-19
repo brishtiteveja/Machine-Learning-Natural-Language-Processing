@@ -1,0 +1,67 @@
+pydev debugger: starting (pid: 54381)
+[Found /usr/local/bin/megam: /usr/local/bin/megam]
+1327
+500
+
+Training
+total 472
+-rw-r--r--  1 ananda  wheel   1711 Feb 27 10:27 Penn Treebank POS Tag.txt
+-rw-r--r--  1 ananda  staff     47 Feb 16 18:07 README.md
+-rwxr-xr-x  1 ananda  staff   2675 Mar 12 08:43 classify.py
+-rw-r--r--  1 ananda  wheel   2776 Mar  4 19:15 classify.pyc
+-rw-r-----@ 1 ananda  wheel  31150 Mar 10 19:37 crf.py
+drwxr-xr-x  5 ananda  wheel    170 Mar 10 11:55 cs4740
+drwxr-xr-x  6 ananda  wheel    204 Mar  2 15:29 cvresult0
+drwxr-xr-x  7 ananda  wheel    238 Mar  4 10:34 data
+-rw-r-----@ 1 ananda  wheel  18668 Mar 10 00:18 maxentpostagger.py
+-rw-r-----  1 ananda  wheel  19557 Mar 10 00:25 maxentpostagger.pyc
+drwx------@ 6 ananda  wheel    204 Feb  4 07:51 mix20_rand700_tokens_cleaned
+-rw-r--r--  1 ananda  wheel   4799 Mar  4 19:15 nltk-test.pyc
+-rw-r--r--  1 ananda  wheel   3458 Mar 10 12:20 nltktest.py
+-rw-r--r--  1 ananda  wheel   5994 Mar  8 14:52 nltktest.pyc
+-rw-r--r--  1 ananda  wheel    836 Mar  9 05:29 out-1.txt
+-rw-r--r--  1 ananda  wheel   3181 Mar  9 07:59 out-2.txt
+-rw-r--r--  1 ananda  wheel   1348 Mar  9 09:26 out-3.txt
+-rw-r--r--  1 ananda  wheel    801 Mar 10 08:30 out-hmm-normal-classifier.txt
+-rw-r--r--@ 1 ananda  wheel   4803 Mar 10 00:24 out-pos1.txt
+-rw-r--r--  1 ananda  wheel    108 Mar 12 10:36 out.txt
+-rwxr-xr-x@ 1 ananda  staff   5906 Feb 20 02:57 parser_tokenizer.py
+-rw-r--r--  1 ananda  wheel   4484 Mar  4 11:09 pos_tagging.py
+-rwxr-xr-x  1 ananda  staff  19978 Feb 16 18:07 script-betterfeature.py
+-rwxr-xr-x  1 ananda  staff    379 Feb 16 18:07 script-feature.py
+-rw-r--r--  1 ananda  staff  14041 Feb 16 18:07 script.py
+-rw-r--r--  1 ananda  wheel  19557 Mar 12 10:17 tagger_compare.py
+-rw-r--r--  1 ananda  staff   4745 Feb 16 18:07 text_mining.rb
+-rwxr-xr-x@ 1 ananda  staff   1284 Feb 19 21:05 tokenize_sentences.py
+-rw-r-----@ 1 ananda  wheel   3982 Mar  9 00:52 utils.py
+-rw-r-----  1 ananda  wheel   5400 Mar  9 00:52 utils.pyc
+Traceback (most recent call last):
+  File "/Applications/eclipse/plugins/org.python.pydev_3.9.2.201502050007/pysrc/pydevd.py", line 2235, in <module>
+
+Not enough input parameters!
+
+
+SVM-struct classification module: SVM-HMM, V3.10, 14.08.08
+   includes SVM-struct V3.10 for learning complex outputs, 14.08.08
+   includes SVM-light V6.20 quadratic optimizer, 14.08.08
+
+Copyright: Thorsten Joachims, thorsten@joachims.org
+
+This software is available for non-commercial use only. It must not
+be modified and distributed without prior permission of the author.
+The author is not responsible for implications from the use of this
+software.
+
+   usage: svm_struct_classify [options] example_file model_file output_file
+
+options: -h         -> this help
+         -v [0..3]  -> verbosity level (default 2)
+
+         --b [0..]   -> Width of beam in approximate Viterbi search (0 means
+                        that exact Viterbi is used) (default 0)
+    globals = debugger.run(setup['file'], None, None)
+  File "/Applications/eclipse/plugins/org.python.pydev_3.9.2.201502050007/pysrc/pydevd.py", line 1661, in run
+    pydev_imports.execfile(file, globals, locals)  # execute the script
+  File "/Volumes/Andy's Backup/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Project/Machine-Learning-Natural-Language-Processing/tagger_compare.py", line 508, in <module>
+    tag_file = open(tagfile, "r")
+IOError: [Errno 2] No such file or directory: "/Volumes/Andy's Backup/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Softwares/svm_hmm/classify.tags"

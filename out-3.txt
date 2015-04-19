@@ -1,0 +1,31 @@
+[Found /usr/local/bin/megam: /usr/local/bin/megam]
+Total sentences in Brown Corpus: 57340
+Total words in Brown Corpus: 1161192
+Regexp Tagger:
+Training
+Evaluation
+accuracy: 29.8 %
+precision: 50.3 %
+recaull: 45.0 %
+f_measure: 47.5 %
+Took 13.0543348789 time
+
+Classifier Based Tagger(NaiveBayesClassifier):
+Training
+Evaluation
+Classifier Based Tagger(NaiveBayesClassifier) accuracy: 92.4 %
+Classifier Based Tagger(NaiveBayesClassifier) precision: 83.4 %
+Classifier Based Tagger(NaiveBayesClassifier) recaull: 81.2 %
+Classifier Based Tagger(NaiveBayesClassifier) f_measure: 82.3 %
+Took 2500.16909003 time
+ 
+Classifier Based Tagger(WekaClassifier):
+Training
+Traceback (most recent call last):
+  File "/Volumes/Andy's Backup/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Project/Machine-Learning-Natural-Language-Processing/tagger_compare.py", line 171, in <module>
+    clsfpos_tagger = ClassifierBasedPOSTagger(train=training,classifier_builder=(clsf[i]).train,backoff=regexp_tagger)
+  File "/usr/local/lib/python2.7/site-packages/nltk/tag/sequential.py", line 630, in __init__
+    self._train(train, classifier_builder, verbose)
+  File "/usr/local/lib/python2.7/site-packages/nltk/tag/sequential.py", line 667, in _train
+    self._classifier = classifier_builder(classifier_corpus)
+TypeError: train() takes at least 3 arguments (2 given)

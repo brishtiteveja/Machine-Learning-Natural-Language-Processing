@@ -1,0 +1,51 @@
+[Found /usr/local/bin/megam: /usr/local/bin/megam]
+1327
+500
+
+Regexp Tagger:
+Training
+Training
+HMM Tagger(MLE):
+Evaluation
+accuracy: 17.1 %
+precision: 13.1 %
+recaull: 13.6 %
+f_measure: 13.4 %
+Took 6.66510105133 time
+ 
+Training
+HMM Tagger(LaplaceProbDist):
+Evaluation
+accuracy: 66.8 %
+precision: 41.6 %
+recaull: 44.8 %
+f_measure: 43.1 %
+Took 3.53360295296 time
+ 
+Training
+HMM Tagger(ELEProbDist):
+Evaluation
+accuracy: 70.0 %
+precision: 45.9 %
+recaull: 48.3 %
+f_measure: 47.0 %
+Took 3.63081884384 time
+ 
+Training
+HMM Tagger(WittenBellProbDist):
+Evaluation
+accuracy: 76.5 %
+precision: 57.7 %
+recaull: 58.0 %
+f_measure: 57.9 %
+Took 3.62986707687 time
+ 
+Training
+HMM Tagger(SimpleGoodTuringProbDist):
+Evaluation
+accuracy: 77.8 %
+precision: 60.3 %
+recaull: 60.1 %
+f_measure: 60.2 %
+Took 23.5272951126 time
+ 

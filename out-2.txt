@@ -1,0 +1,119 @@
+[Found /usr/local/bin/megam: /usr/local/bin/megam]
+Total sentences in Brown Corpus: 57340
+Total words in Brown Corpus: 1161192
+Regexp Tagger:
+Training
+Evaluation
+accuracy: 29.8 %
+precision: 50.3 %
+recaull: 45.0 %
+f_measure: 47.5 %
+Took 14.778247118 time
+
+Sequence Tagger(ubt_tagger):
+Training
+Evaluation
+SequenceTagger(ubt_tagger) accuracy: 92.0 %
+SequenceTagger(ubt_tagger) precision: 80.2 %
+SequenceTagger(ubt_tagger) recaull: 76.9 %
+SequenceTagger(ubt_tagger) f_measure: 78.5 %
+Took 40.8683180809 time
+ 
+Sequence Tagger(utb_tagger):
+Training
+Evaluation
+SequenceTagger(utb_tagger) accuracy: 91.3 %
+SequenceTagger(utb_tagger) precision: 79.9 %
+SequenceTagger(utb_tagger) recaull: 74.6 %
+SequenceTagger(utb_tagger) f_measure: 77.2 %
+Took 39.1972589493 time
+ 
+Sequence Tagger(but_tagger):
+Training
+Evaluation
+SequenceTagger(but_tagger) accuracy: 82.5 %
+SequenceTagger(but_tagger) precision: 50.2 %
+SequenceTagger(but_tagger) recaull: 54.9 %
+SequenceTagger(but_tagger) f_measure: 52.4 %
+Took 42.6226871014 time
+ 
+Sequence Tagger(btu_tagger):
+Training
+Evaluation
+SequenceTagger(btu_tagger) accuracy: 80.1 %
+SequenceTagger(btu_tagger) precision: 47.2 %
+SequenceTagger(btu_tagger) recaull: 51.6 %
+SequenceTagger(btu_tagger) f_measure: 49.3 %
+Took 41.2588591576 time
+ 
+Sequence Tagger(tub_tagger):
+Training
+Evaluation
+SequenceTagger(tub_tagger) accuracy: 67.7 %
+SequenceTagger(tub_tagger) precision: 31.1 %
+SequenceTagger(tub_tagger) recaull: 34.0 %
+SequenceTagger(tub_tagger) f_measure: 32.5 %
+Took 41.8363130093 time
+ 
+Sequence Tagger(tbu_tagger):
+Training
+Evaluation
+SequenceTagger(tbu_tagger) accuracy: 66.0 %
+SequenceTagger(tbu_tagger) precision: 28.9 %
+SequenceTagger(tbu_tagger) recaull: 30.6 %
+SequenceTagger(tbu_tagger) f_measure: 29.7 %
+Took 41.9386131763 time
+ 
+Sequence Tagger(ubta_tagger):
+Training
+Evaluation
+SequenceTagger(ubta_tagger) accuracy: 84.4 %
+SequenceTagger(ubta_tagger) precision: 70.2 %
+SequenceTagger(ubta_tagger) recaull: 64.4 %
+SequenceTagger(ubta_tagger) f_measure: 67.1 %
+Took 43.1747219563 time
+ 
+Sequence Tagger(ubat_tagger):
+Training
+Evaluation
+SequenceTagger(ubat_tagger) accuracy: 88.5 %
+SequenceTagger(ubat_tagger) precision: 73.9 %
+SequenceTagger(ubat_tagger) recaull: 73.0 %
+SequenceTagger(ubat_tagger) f_measure: 73.4 %
+Took 42.5614302158 time
+ 
+Sequence Tagger(uabt_tagger):
+Training
+Evaluation
+SequenceTagger(uabt_tagger) accuracy: 88.5 %
+SequenceTagger(uabt_tagger) precision: 73.9 %
+SequenceTagger(uabt_tagger) recaull: 73.0 %
+SequenceTagger(uabt_tagger) f_measure: 73.4 %
+Took 43.538020134 time
+ 
+Sequence Tagger(aubt_tagger):
+Training
+Evaluation
+SequenceTagger(aubt_tagger) accuracy: 88.5 %
+SequenceTagger(aubt_tagger) precision: 73.9 %
+SequenceTagger(aubt_tagger) recaull: 73.0 %
+SequenceTagger(aubt_tagger) f_measure: 73.4 %
+Took 45.2720220089 time
+ 
+Sequence Tagger(raubt_tagger):
+Training
+Evaluation
+SequenceTagger(raubt_tagger) accuracy: 93.2 %
+SequenceTagger(raubt_tagger) precision: 87.8 %
+SequenceTagger(raubt_tagger) recaull: 84.3 %
+SequenceTagger(raubt_tagger) f_measure: 86.0 %
+Took 52.5831429958 time
+ 
+HMM Tagger:
+Training
+Evaluation
+accuracy: 93.6 %
+precision: 79.5 %
+recaull: 78.7 %
+f_measure: 79.1 %
+Took 974.347676992 time

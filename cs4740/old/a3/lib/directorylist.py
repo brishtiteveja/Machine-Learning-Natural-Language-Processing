@@ -1,0 +1,5 @@
+data_path = '/Users/ananda/Documents/projects/ML-nlp/cs4740/old/a3/lib/'
+trainfl = '/Users/ananda/Documents/projects/ML-nlp/cs4740/old/a3/lib/data/oct27.traindev'
+testfl =  '/Users/ananda/Documents/projects/ML-nlp/cs4740/old/a3/lib/data/oct27.test'
+traindevfl = '/Users/ananda/Documents/projects/ML-nlp/cs4740/old/a3/lib/data/oct27.traindev'
+basefl = '/Users/ananda/Documents/projects/ML-nlp/cs4740/old/a3/lib/data/oct27.baseline'

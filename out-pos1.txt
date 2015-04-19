@@ -1,0 +1,181 @@
+[Found /usr/local/bin/megam: /usr/local/bin/megam]
+1327
+500
+
+Unigram Tagger:
+Training
+Evaluation
+accuracy: 65.8 %
+precision: 36.2 %
+recaull: 34.4 %
+f_measure: 35.3 %
+Took 0.206033945084 time
+Bigram Tagger:
+Training
+Evaluation
+accuracy: 66.2 %
+precision: 36.9 %
+recaull: 35.6 %
+f_measure: 36.2 %
+Took 0.302650928497 time
+Trigram Tagger:
+Training
+Evaluation
+accuracy: 66.0 %
+precision: 36.6 %
+recaull: 35.1 %
+f_measure: 35.8 %
+Took 0.314556837082 time
+Regexp Tagger:
+Training
+Evaluation
+accuracy: 28.6 %
+precision: 20.0 %
+recaull: 19.0 %
+f_measure: 19.5 %
+Took 0.175873994827 time
+
+Affix Tagger:
+Training
+Evaluation
+accuracy: 36.7 %
+precision: 32.2 %
+recaull: 30.6 %
+f_measure: 31.4 %
+Took 0.232838153839 time
+Sequence Tagger(ubt_tagger):
+Training
+Evaluation
+SequenceTagger(ubt_tagger) accuracy: 66.2 %
+SequenceTagger(ubt_tagger) precision: 37.0 %
+SequenceTagger(ubt_tagger) recaull: 35.8 %
+SequenceTagger(ubt_tagger) f_measure: 36.4 %
+Took 0.659953117371 time
+ 
+Sequence Tagger(utb_tagger):
+Training
+Evaluation
+SequenceTagger(utb_tagger) accuracy: 66.2 %
+SequenceTagger(utb_tagger) precision: 36.6 %
+SequenceTagger(utb_tagger) recaull: 35.1 %
+SequenceTagger(utb_tagger) f_measure: 35.9 %
+Took 0.601797103882 time
+ 
+Sequence Tagger(but_tagger):
+Training
+Evaluation
+SequenceTagger(but_tagger) accuracy: 42.0 %
+SequenceTagger(but_tagger) precision: 16.2 %
+SequenceTagger(but_tagger) recaull: 16.6 %
+SequenceTagger(but_tagger) f_measure: 16.4 %
+Took 0.669041872025 time
+ 
+Sequence Tagger(btu_tagger):
+Training
+Evaluation
+SequenceTagger(btu_tagger) accuracy: 35.7 %
+SequenceTagger(btu_tagger) precision: 14.7 %
+SequenceTagger(btu_tagger) recaull: 15.2 %
+SequenceTagger(btu_tagger) f_measure: 14.9 %
+Took 0.782645940781 time
+ 
+Sequence Tagger(tub_tagger):
+Training
+Evaluation
+SequenceTagger(tub_tagger) accuracy: 24.7 %
+SequenceTagger(tub_tagger) precision: 7.1 %
+SequenceTagger(tub_tagger) recaull: 7.0 %
+SequenceTagger(tub_tagger) f_measure: 7.1 %
+Took 0.709505081177 time
+ 
+Sequence Tagger(tbu_tagger):
+Training
+Evaluation
+SequenceTagger(tbu_tagger) accuracy: 24.6 %
+SequenceTagger(tbu_tagger) precision: 6.9 %
+SequenceTagger(tbu_tagger) recaull: 6.8 %
+SequenceTagger(tbu_tagger) f_measure: 6.8 %
+Took 0.73486495018 time
+ 
+Sequence Tagger(ubta_tagger):
+Training
+Evaluation
+SequenceTagger(ubta_tagger) accuracy: 66.2 %
+SequenceTagger(ubta_tagger) precision: 37.7 %
+SequenceTagger(ubta_tagger) recaull: 36.4 %
+SequenceTagger(ubta_tagger) f_measure: 37.1 %
+Took 0.890210866928 time
+ 
+Sequence Tagger(ubat_tagger):
+Training
+Evaluation
+SequenceTagger(ubat_tagger) accuracy: 66.1 %
+SequenceTagger(ubat_tagger) precision: 37.8 %
+SequenceTagger(ubat_tagger) recaull: 36.5 %
+SequenceTagger(ubat_tagger) f_measure: 37.1 %
+Took 0.87438583374 time
+ 
+Sequence Tagger(uabt_tagger):
+Training
+Evaluation
+SequenceTagger(uabt_tagger) accuracy: 66.1 %
+SequenceTagger(uabt_tagger) precision: 37.8 %
+SequenceTagger(uabt_tagger) recaull: 36.5 %
+SequenceTagger(uabt_tagger) f_measure: 37.1 %
+Took 0.834403991699 time
+ 
+Sequence Tagger(aubt_tagger):
+Training
+Evaluation
+SequenceTagger(aubt_tagger) accuracy: 66.1 %
+SequenceTagger(aubt_tagger) precision: 37.8 %
+SequenceTagger(aubt_tagger) recaull: 36.5 %
+SequenceTagger(aubt_tagger) f_measure: 37.1 %
+Took 0.838495969772 time
+ 
+Sequence Tagger(raubt_tagger):
+Training
+Evaluation
+SequenceTagger(raubt_tagger) accuracy: 73.6 %
+SequenceTagger(raubt_tagger) precision: 53.2 %
+SequenceTagger(raubt_tagger) recaull: 51.6 %
+SequenceTagger(raubt_tagger) f_measure: 52.4 %
+Took 1.04793596268 time
+ 
+HMM Tagger:
+Training
+Evaluation
+accuracy: 72.5 %
+precision: 49.7 %
+recaull: 50.5 %
+f_measure: 50.1 %
+Took 3.41700291634 time
+Classifier Based Tagger(NaiveBayesClassifier):
+Training
+Evaluation
+Classifier Based Tagger(NaiveBayesClassifier) accuracy: 81.8 %
+Classifier Based Tagger(NaiveBayesClassifier) precision: 68.9 %
+Classifier Based Tagger(NaiveBayesClassifier) recaull: 67.6 %
+Classifier Based Tagger(NaiveBayesClassifier) f_measure: 68.3 %
+Took 8.8205640316 time
+ 
+Classifier Based Tagger(MaxentClassifier):
+Training
+  ==> Training (100 iterations)
+
+      Iteration    Log Likelihood    Accuracy
+      ---------------------------------------
+             1          -3.21888        0.036
+             2          -0.82665        0.944
+             3          -0.53736        0.979
+             4          -0.40397        0.988
+             5          -0.32607        0.991
+             6          -0.27444        0.993
+             7          -0.23746        0.995
+             8          -0.20957        0.995
+             9          -0.18774        0.996
+            10          -0.17017        0.997
+            11          -0.15570        0.997
+            12          -0.14357        0.998
+            13          -0.13326        0.998
+            14          -0.12437        0.998
