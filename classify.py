@@ -78,7 +78,7 @@ for j in range(3):
 
 out.close()
 
-#for name, clf in zip(names2, classifiers2):
+#fo name, clf in zip(names2, classifiers2):
 #   clf.fit(X_train,y_train) 
 #   score = clf.score(X_test,y_test)
 #   print name + ": " + str(score)

@@ -2,7 +2,8 @@
 import math,random,argparse,time,inspect
 from pprint import pprint
 from cProfile import run
-from Parser import *
+from localParser import *
+from directorylist import *
 
 class HMM():
     def __init__(self, ngram=2, smooth="lap"):
@@ -204,8 +205,8 @@ if __name__ == "__main__":
                  # "<s> DOGS like to eat ice cream".split()) ]
     # print data
     # teststr = "<s> The plant , which is owned by Hollingsworth & Vose Co. , was under contract with Lorillard to make the cigarette filters .".split()
-    
-    data = parse_training_file()
+   
+    data = parser.parse_training_file()
     datalen = float(len(data))
     # k-fold cross validation
     # total = 0.0

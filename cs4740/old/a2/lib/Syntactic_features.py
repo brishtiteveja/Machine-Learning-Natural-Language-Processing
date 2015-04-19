@@ -1,6 +1,6 @@
 import re
 
-#prepare file for input to the Stanford parser
+#prepare file for input to the Stanford localParser
 #returns a list of target words in the order that they are in inside the file
 def prepare_file(filename):
     word_list = []
@@ -55,8 +55,8 @@ if __name__ == '__main__':
     #filename = 'data/wsd-data/train.data';
     #filename = 'data/wsd-data/test.data';
     word_list = prepare_file(filename);
-    #use the stanford parser to parse the output file
-    raw_input("Parse the file with Stanford parser and press any key to continue")
+    #use the stanford localParser to parse the output file
+    raw_input("Parse the file with Stanford localParser and press any key to continue")
     synfeatures = parse_stanford_output(filename, word_list);
     print synfeatures
                

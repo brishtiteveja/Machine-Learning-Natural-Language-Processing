@@ -1,9 +1,5 @@
-data_path = '/Volumes/Andy\'s Backup/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Project/Machine-Learning-Natural-Language-Processing/cs4740/old/a3/lib/data/'
-trainfl = '/Volumes/Andy\'s Backup/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Project/Machine-Learning-Natural-Language-Processing/cs4740/old/a3/lib/data/oct27.traindev'
-testfl =  '/Volumes/Andy\'s Backup/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Project/Machine-Learning-Natural-Language-Processing/cs4740/old/a3/lib/data/oct27.test'
-traindevfl = '/Volumes/Andy\'s Backup/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Project/Machine-Learning-Natural-Language-Processing/cs4740/old/a3/lib/data/oct27.traindev'
-basefl = '/Volumes/Andy\'s Backup/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Project/Machine-Learning-Natural-Language-Processing/cs4740/old/a3/lib/data/oct27.baseline'
-
+from directorylist import *
+from genericpath import exists
 import os
 import cPickle as pickle
 from collections import Counter
@@ -35,7 +31,7 @@ class PrefixSuffixExtractor():
     def train(self,data):
         # data = list of [list of (POS,word) tuples]
         for sequence in data:
-            for pos,word in sequence[1:]:
+            for word,pos in sequence[1:]:
                 for nfix in range( self.lb, min(self.ub, len(word)) ):
                     self.inc(self.pre, word[:nfix])
                     self.inc(self.suf, word[-nfix:])
@@ -141,6 +137,7 @@ class WordFeature():
             return []
     # Length functions return the length of the full feature vector
     def len(self):
+        print self.words
         return len(self.words)
     def __len__(self):
         return self.len()
@@ -196,7 +193,8 @@ class CapitalizedFeature():
         # Computes sparse feature vector
         word = observations[position]
         f = []
-        if word[0] in self.caps:
+        print word
+        if len(word) > 0 and word[0] in self.caps:
             f.append( (0,1) ) # Starts with a capital
             if all( [ w in self.caps for w in word[1:] ] ):
                 f.append( (1,1) ) # All capitals

@@ -17,6 +17,7 @@ from nltk.classify.decisiontree import DecisionTreeClassifier
 from nltk.classify.util import accuracy, apply_features, log_likelihood
 from nltk.classify.scikitlearn import SklearnClassifier
 from nltk.classify.maxent import (MaxentClassifier, ConditionalExponentialClassifier)
+from nltk.corpus import ptb
 
 """
 Converts string name to class object

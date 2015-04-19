@@ -1,14 +1,13 @@
-data_path = '/Volumes/Andy\'s Backup/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Project/Machine-Learning-Natural-Language-Processing/cs4740/old/a3/lib/data/'
-trainfl = '/Volumes/Andy\'s Backup/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Project/Machine-Learning-Natural-Language-Processing/cs4740/old/a3/lib/data/oct27.traindev'
-testfl =  '/Volumes/Andy\'s Backup/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Project/Machine-Learning-Natural-Language-Processing/cs4740/old/a3/lib/data/oct27.test'
-traindevfl = '/Volumes/Andy\'s Backup/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Project/Machine-Learning-Natural-Language-Processing/cs4740/old/a3/lib/data/oct27.traindev'
-basefl = '/Volumes/Andy\'s Backup/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Project/Machine-Learning-Natural-Language-Processing/cs4740/old/a3/lib/data/oct27.baseline'
+from directorylist import *
+import parser
+from parser import * 
+from Features_impl import PrefixSuffixExtractor, WordExtractor,\
+    POSExtractor, FeatureVectorizer
 
-
-import argparse,os
+import argparse, os
 import cPickle as pickle
 from pprint import pprint
-from Parser import *
+from localParser import *
 from Features_impl import CapitalizedFeature, WordFeature, PrefixSuffixFeature, WordLengthFeature,\
          LetterFrequencyFeature, SentenceLengthFeature, PunctuationFeature, NumberFeature 
 
@@ -16,12 +15,12 @@ from Features_impl import CapitalizedFeature, WordFeature, PrefixSuffixFeature, 
 FeatureSet = [  
                 CapitalizedFeature,
                 WordFeature,
-                PrefixSuffixFeature,
+              #  PrefixSuffixFeature,
                 WordLengthFeature,
                 LetterFrequencyFeature,
-                SentenceLengthFeature
-                # PunctuationFeature,
-                # NumberFeature,
+                SentenceLengthFeature,
+                PunctuationFeature,
+                NumberFeature,
                 ]
 
 if __name__ == "__main__":
@@ -63,17 +62,17 @@ if __name__ == "__main__":
         with open(args.outdir+"prefix_suffix.dat","w") as f:
             pickle.dump(feat,f)
         feat = WordExtractor().train(data).get()
-        with open(args.outdir+"words.dat","w") as f:
+        with open(args.outdir+"pos.dat","w") as f:
             pickle.dump(feat,f)
         feat = POSExtractor().train(data).get()
-        with open(args.outdir+"pos.dat","w") as f:
+        with open(args.outdir+"words.dat","w") as f:
             pickle.dump(feat,f)
     if args.generate == False:
         window = range( -(args.windowsize/2), 1+args.windowsize/2 )
         print "Window:"," ".join(str(window))
         fv = FeatureVectorizer(window=window,
                 features=[f() for f in FeatureSet])
-        # fv = FeatureVectorizer(features=[WordFeature()])
+        #fv = FeatureVectorizer(features=[WordFeature()])
         print "Total number of features:",fv.len()
         # exit(0)
         if args.trainfile != None:
@@ -81,11 +80,15 @@ if __name__ == "__main__":
             training_data = parse_opened_training_file(args.trainfile)
             print "done"
             print "Generating features...",
-            with open(args.trainfile.name + ".features",'w') as output_file:
-                for qid,sequence in enumerate(training_data):
+            with open(args.trainfile.name + ".features.withoutprefsuf.txt",'w') as output_file:
+                print output_file
+                ee= enumerate(training_data)
+                qid = 0
+                for data in training_data:
+                    sequence = data
                     qid = qid+1
-                    words = [w for p,w in sequence[1:]]
-                    tags =  [POS_to_idx[p] for p,w in sequence[1:]]
+                    words = [w for w,p in sequence[1:]]
+                    tags =  [POS_to_idx[p] for w,p in sequence[1:]]
                     for position in range(0,len(words)):
                         g = fv.transform(words,position)
                         tag = tags[position]
@@ -98,12 +101,12 @@ if __name__ == "__main__":
             print "done"
         if args.testfile != None:
             print "Parsing test data...",
-            training_data = parse_opened_test_file(args.testfile)
+            test_data = parse_opened_test_file(args.testfile)
             print "done"
             print "Generating features...",
-            with open(args.testfile.name + ".features",'w') as output_file:
+            with open(args.testfile.name + ".features.withoutprefsuf.txt",'w') as output_file:
                 tag = 1
-                for qid,sequence in enumerate(training_data):
+                for qid,sequence in enumerate(test_data):
                     qid = qid+1
                     words = sequence[1:]
                     for position in range(0,len(words)):

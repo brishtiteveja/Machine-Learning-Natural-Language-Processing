@@ -473,6 +473,33 @@ def evaluate(tagged_sents, gold):
 #      print " "
 
 
+import nltk.tag.crf
+os.environ["MALLET"] = "/usr/local/bin/mallet"
+os.environ["MALLET_HOME"] = "/usr/local/Cellar/mallet/2.0.7"
+os.environ["CLASSPATH"]="$CLASSPATH:/usr/local/Cellar/mallet/2.0.7/libexec/class:/usr/local/Cellar/mallet/2.0.7/libexec/lib/mallet-deps.jar"
+
+nltk.tag.crf.demo()
+
+print "CRF(Conditional Random Field) Tagger:" 
+print "Training"
+t_s = time.time()
+unigram_tagger = UnigramTagger(training)
+    
+print "Evaluation"
+tagged_sents=unigram_tagger.tag_sents(untag(sent) for sent in test)
+(a,p,r,f) = evaluate(tagged_sents,test)
+print "accuracy: %.1f %%" % (a * 100)
+print "precision: %.1f %%" % (p * 100)
+print "recaull: %.1f %%" % (r * 100)
+print "f_measure: %.1f %%" % (f  * 100)
+    
+t_e = time.time()
+t = t_e - t_s 
+print "Took " + str(t)  + " time"
+
+
+
+
 #svm_hmm
 Tags=['N','O','^','S','Z','V','L','M','A','R','!','D','P','&','T','X','Y','#','#','@','~','U','E','$',',','G']
 Features = [

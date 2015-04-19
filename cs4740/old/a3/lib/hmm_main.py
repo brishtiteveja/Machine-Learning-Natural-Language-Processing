@@ -1,12 +1,7 @@
 # HMM Main
-data_path = '/Volumes/Andy\'s Backup/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Project/Machine-Learning-Natural-Language-Processing/cs4740/old/a3/lib/data/'
-trainfl = '/Volumes/Andy\'s Backup/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Project/Machine-Learning-Natural-Language-Processing/cs4740/old/a3/lib/data/oct27.traindev'
-testfl =  '/Volumes/Andy\'s Backup/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Project/Machine-Learning-Natural-Language-Processing/cs4740/old/a3/lib/data/oct27.test'
-traindevfl = '/Volumes/Andy\'s Backup/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Project/Machine-Learning-Natural-Language-Processing/cs4740/old/a3/lib/data/oct27.traindev'
-devfl
-basefl = '/Volumes/Andy\'s Backup/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Project/Machine-Learning-Natural-Language-Processing/cs4740/old/a3/lib/data/oct27.baseline'
-
-import Parser, HMM, random
+from directorylist import *
+import HMM, random
+import localParser
 from sys import stdout
 random.seed(1023)
 
@@ -17,8 +12,8 @@ random.seed(1023)
 #    "none" : No smoothing applied.  To avoid 0 probability, we assign 1e-8 probability to unseen transitions
 hmm = HMM.HMM(ngram=2, smooth='none')
 
-data = Parser.parse_training_file()
-test_data = Parser.parse_test_file()
+data = localParser.parse_training_file()
+test_data = localParser.parse_test_file()
 train_len, test_len = len(data), len(test_data)
 print train_len, test_len
 

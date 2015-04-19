@@ -1,7 +1,4 @@
-
-trainfl = '/Volumes/Andy\'s Backup/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Project/Machine-Learning-Natural-Language-Processing/cs4740/old/a3/lib/data/oct27.traindev'
-testfl =  '/Volumes/Andy\'s Backup/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Project/Machine-Learning-Natural-Language-Processing/cs4740/old/a3/lib/data/oct27.test'
-basefl = '/Volumes/Andy\'s Backup/zehadyzbdullahkhan/Documents/PurdueUniversity/Courses/ML-NLP/Project/Machine-Learning-Natural-Language-Processing/cs4740/old/a3/lib/data/oct27.baseline'
+from directorylist import *
 
 def train(filename=trainfl):
     tokens = dict()
